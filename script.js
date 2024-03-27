@@ -1,11 +1,11 @@
-console.log("teste")
+// console.log("teste")
 
-let teste = 1.1
-let variavelString = "Hello, World!";
+// let teste = 1.1
+// let variavelString = "Hello, World!";
 
-console.log(teste);
-console.log(variavelString);
-console.log(typeof(teste));
+// console.log(teste);
+// console.log(variavelString);
+// console.log(typeof(teste));
 
 //let a = "5";
 //let b = 2;
@@ -16,12 +16,12 @@ console.log(typeof(teste));
 //let numero1 = 0.1;
 //let numero2 = 0.2;
 
-let texto1 = "ola";
-let texto2 = "mundo";
+// let texto1 = "ola";
+// let texto2 = "mundo";
 
-let resultadoTexto = texto1 + ", " + texto2 + "isadbnfiasbf " + " isadbfioabsdf";
+// let resultadoTexto = texto1 + ", " + texto2 + "isadbnfiasbf " + " isadbfioabsdf";
 
-console.log(resultadoTexto);
+// console.log(resultadoTexto);
 
 /*
 let resultado = a - b;

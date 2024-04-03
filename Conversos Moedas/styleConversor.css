@@ -18,11 +18,13 @@ input, button, select {
 }
 
 body {
-    background-color: #000;
+    background-image: url(setu.png);
+    background-position: center center;
+    background-position:0% 0%;
 }
 
 div {
-    background-color: #ccc;
+    background-color:#ccc;
 }
 
 .color {

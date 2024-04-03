@@ -26,6 +26,20 @@ const botaoConverter = document.getElementById("btn-converter");
 const botaoLimpar = document.getElementById("btn-limpar");
  botaoLimpar.addEventListener("click", limpar);
  
+let valorUsuario = document.getElementById("valorEntrada");
+valorUsuario.addEventListener("keypress", function (event) {
+    if(event.ctrlKey == true && event.code == "KeyI") {
+        inverter();
+    }
+    if(event.key == "Enter") {
+        event.preventDefault();
+        converter();
+    }
+    if(event.crtlKey == true && event.code == "KeyL") {
+        event.preventDefault();
+        limpar();
+    }
+})
 function converter() {
     let valorUsuario = document.getElementById("valorEntrada").value
     let moeda1 = document.getElementById("moeda1").value

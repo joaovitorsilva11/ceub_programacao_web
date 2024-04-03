@@ -17,6 +17,15 @@ const valoresConversao = {
     }
 }
 
+const botaoInverter = document.getElementById("btn-inverter");
+ botaoInverter.addEventListener("click", inverter);
+
+const botaoConverter = document.getElementById("btn-converter");
+ botaoConverter.addEventListener("click", converter);
+ 
+const botaoLimpar = document.getElementById("btn-limpar");
+ botaoLimpar.addEventListener("click", limpar);
+ 
 function converter() {
     let valorUsuario = document.getElementById("valorEntrada").value
     let moeda1 = document.getElementById("moeda1").value

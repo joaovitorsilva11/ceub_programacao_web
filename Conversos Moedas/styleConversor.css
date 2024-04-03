@@ -11,16 +11,16 @@ input, button, select {
     margin-bottom: 0.4rem;
 }
 
-#converter {
+#btn-converter {
     display: flex;
     margin-left: auto;
     margin-right: auto;
 }
 
 body {
-    background-image: url(setu.png);
+    background-image: url(setu.jpg);
     background-position: center center;
-    background-position:0% 0%;
+    background-position: 30% 40%;
 }
 
 div {

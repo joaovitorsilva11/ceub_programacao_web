@@ -29,9 +29,16 @@ const botaoLimpar = document.getElementById("btn-limpar");
 const botaoAceitaMensagem = document.getElementById("btnMensagem");
 botaoAceitaMensagem.addEventListener("click", aceitarMensagem);
 
+if(localStorage.getItem("aceitouCookie") == "1") {
+    const divMensagemUsuario = document.getElementById("mensagem-usuario");
+    divMensagemUsuario.classList.add("oculto")
+}
+
 function aceitarMensagem() {
     const divMensagemUsuario = document.getElementById("mensagem-usuario");
     divMensagemUsuario.classList.add("oculto")
+
+    localStorage.setItem("aceitouCookie", "1")
 }
  
 let valorUsuario = document.getElementById("valorEntrada");
@@ -65,10 +72,19 @@ function converter() {
     }
 
     let simbolo = valoresConversao[moeda2]["simbolo"];
-    console.log(simbolo);
     let resultado = valorUsuario * valoresConversao[moeda1][moeda2];
     let paragrafoResultado = document.getElementById("resultado");
     paragrafoResultado.textContent = simbolo + " " + resultado.toFixed(2);
+
+    let objetoResultado = {
+        valorDoUsuario: valorUsuario,
+        valorMoeda1: moeda1,
+        valorMoeda2: moeda2,
+        valorResultado: resultado
+    }
+
+    console.log(objetoResultado);
+    localStorage.setItem("historico", objetoResultado)
 }
 
 function limpar() {

@@ -25,6 +25,14 @@ const botaoConverter = document.getElementById("btn-converter");
  
 const botaoLimpar = document.getElementById("btn-limpar");
  botaoLimpar.addEventListener("click", limpar);
+
+const botaoAceitaMensagem = document.getElementById("btnMensagem");
+botaoAceitaMensagem.addEventListener("click", aceitarMensagem);
+
+function aceitarMensagem() {
+    const divMensagemUsuario = document.getElementById("mensagem-usuario");
+    divMensagemUsuario.classList.add("oculto")
+}
  
 let valorUsuario = document.getElementById("valorEntrada");
 valorUsuario.addEventListener("keypress", function (event) {
@@ -35,7 +43,7 @@ valorUsuario.addEventListener("keypress", function (event) {
         event.preventDefault();
         converter();
     }
-    if(event.crtlKey == true && event.code == "KeyL") {
+    if(event.crtlKey == true && event.code == "L") {
         event.preventDefault();
         limpar();
     }

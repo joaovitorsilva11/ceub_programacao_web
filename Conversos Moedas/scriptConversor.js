@@ -40,7 +40,17 @@ function aceitarMensagem() {
 
     localStorage.setItem("aceitouCookie", "1")
 }
- 
+
+function buscaConversaoAPI() {
+    fetch("https://economia.awesomeapi.com.br/last/USD-BRL").then(function(response) {
+        console.log(response);
+    }).then(function(data){
+        console.log(data);
+    }).catch(function(error){
+        console.log(error);
+    })
+}
+
 let valorUsuario = document.getElementById("valorEntrada");
 valorUsuario.addEventListener("keypress", function (event) {
     if(event.ctrlKey == true && event.code == "KeyI") {
@@ -56,7 +66,8 @@ valorUsuario.addEventListener("keypress", function (event) {
     }
 })
 function converter() {
-
+    buscaConversaoAPI();
+     
     let historicoRecuperado = recuperarHistorico();
 
     let valorUsuario = document.getElementById("valorEntrada").value

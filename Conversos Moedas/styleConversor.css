@@ -24,7 +24,6 @@ input, button, select {
 }
 
 body {
-    background-image: url(setu.jpg);
     background-position: center center;
     background-position: 30% 40%;
 }
@@ -32,6 +31,11 @@ body {
 .color {
     background-color: orange;
     border-radius: 1rem;
+    cursor: pointer;
+}
+
+.color:hover {
+    background-color: rgb(189, 125, 7);
 }
 
 h1, p {
@@ -49,6 +53,10 @@ h1, p {
     font-weight: bold;
 }
 
+p {
+    font-weight: bold;
+}
+
 #btnMensagem {
     margin-top: 1rem;
     background-color: orange;
@@ -58,4 +66,8 @@ h1, p {
 
 .oculto {
     display: none;
+}
+
+body {
+    background-color: #f0f0f5;
 }

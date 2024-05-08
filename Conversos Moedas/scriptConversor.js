@@ -40,7 +40,17 @@ function aceitarMensagem() {
 
     localStorage.setItem("aceitouCookie", "1")
 }
- 
+
+function buscaConversaoAPI() {
+    fetch("https://economia.awesomeapi.com.br/last/USD-BRL").then(function(response) {
+        console.log(response);
+    }).then(function(data){
+        console.log(data);
+    }).catch(function(error){
+        console.log(error);
+    })
+}
+
 let valorUsuario = document.getElementById("valorEntrada");
 valorUsuario.addEventListener("keypress", function (event) {
     if(event.ctrlKey == true && event.code == "KeyI") {
@@ -56,6 +66,10 @@ valorUsuario.addEventListener("keypress", function (event) {
     }
 })
 function converter() {
+    buscaConversaoAPI();
+     
+    let historicoRecuperado = recuperarHistorico();
+
     let valorUsuario = document.getElementById("valorEntrada").value
     let moeda1 = document.getElementById("moeda1").value
     let moeda2 = document.getElementById("moeda2").value
@@ -80,11 +94,32 @@ function converter() {
         valorDoUsuario: valorUsuario,
         valorMoeda1: moeda1,
         valorMoeda2: moeda2,
-        valorResultado: resultado
+        valorResultado: resultado.toFixed(2)
     }
 
-    console.log(objetoResultado);
-    localStorage.setItem("historico", objetoResultado)
+    // let objetoResultadoJSON = JSON.stringify(objetoResultado);
+
+    // localStorage.setItem("historico", objetoResultadoJSON);
+
+    // console.log(objetoResultado);
+    // localStorage.setItem("historico", objetoResultadoJSON)
+
+    salvarHistorico(objetoResultado)
+}
+
+function recuperarHistorico() {
+    let historico = localStorage.getItem("historico")
+    let historicoObjeto = JSON.parse(historico)
+    if(!historico) {
+        return[];
+    }
+    return historicoObjeto;
+}
+
+function salvarHistorico(conversao) {
+    let historico = recuperarHistorico();
+    historico.push(conversao);
+    localStorage.setItem("historico", JSON.stringify(historico))
 }
 
 function limpar() {

@@ -8,7 +8,23 @@
     <title>Trabalho</title>
 </head>
 <body>
-    
+    <header class="relogio">
+        <div>
+           <span id="horas">00</span>
+            <span class="tempo">Horas</span> 
+        </div>
+        
+        <div>
+            <span id="minutos">00</span>
+             <span class="tempo">Minutos</span> 
+         </div>
+
+         <div>
+            <span id="segundos">00</span>
+             <span class="tempo">Segundos</span> 
+         </div>
+    </header>
+
     <div class="conteudo">
         <div class="topo">
             <input type="text" id="inputNovaTarefa" placeholder="Adicione uma nova tarefa">
@@ -17,7 +33,11 @@
                 <i class="fa fa-plus"></i>
             </button>
         </div>
-
+        <div class="titulo">
+          <p>Título</p>
+          <p id="dataHora">Data e Hora</p>  
+        </div>
+        
         <ul id="listaTarefa">
             
         </ul>

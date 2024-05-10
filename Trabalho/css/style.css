@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poetsen+One&display=swap');
 
 body {
     background-color: #000;
@@ -43,6 +44,46 @@ body {
     font-size: 12px;
 }
 
+
+.relogio {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 3rem;
+    width: 16rem;
+    margin-right: auto;
+    margin-left: auto;
+    background: transparent;
+    border-radius: 3px;
+    margin-top: 1rem;
+}
+
+
+.relogio div{
+    height: 4rem;
+    width: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    letter-spacing: 2px;
+    background-color: #191818;
+}
+
+
+.relogio span{
+    font-weight: bold;
+    font-size: 25px;
+    color: #fff;
+}
+
+
+.relogio span.tempo {
+    font-size: 12px;
+}
+
+
 .conteudo {
     margin: 0 auto;
     width: 100%;
@@ -54,11 +95,13 @@ body {
     border-radius: 12px;
 }
 
+
 .topo {
     display: flex;
     justify-content: space-between;
     margin-bottom: 35px;
 }
+
 
 .topo input {
     width: 350px;
@@ -71,6 +114,7 @@ body {
     color: white;
 }
 
+
 .topo button {
     width: 45px;
     border-radius: 12px;
@@ -80,16 +124,19 @@ body {
     outline: none;
 }
 
+
 .topo button:hover {
     background: #1f1e1e;
     cursor: pointer;
 }
+
 
 #listaTarefa {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
+
 
 #listaTarefa li{
     padding: 20px;
@@ -100,6 +147,7 @@ body {
     align-items: center;
     margin-top: 5px;
 }
+
 
 .btnAcao {
     border-radius: 20px;
@@ -113,9 +161,11 @@ body {
     outline: none;
 }
 
+
 .btnAcao:hover {
     background: #3c3a3a;
 }
+
 
 .textoTarefa {
     overflow: hidden;
@@ -123,17 +173,55 @@ body {
     width: 290px;
     white-space: nowrap;
 }
-
 .dataHoraTarefa {
     font-size: 0.8rem;
 }
 
 .titulo {
     display: flex;
-    margin-left: 1rem;
+    font-size: 1.3rem;
+    font-family: "Playfair Display", serif;
+    color: #fff;
 }
+
+
+#titulo{
+    background-color: #191818;
+    width: 9rem;
+    height: 2rem;
+    text-align: center;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
 
 #dataHora {
     margin-left: auto;
-    margin-right: 5.3rem;
+    margin-right: 1.3rem;
+    background-color: #191818;
+    width: 9rem;
+    height: 2rem;
+    text-align: center;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
+
+#ordemTarefas {
+    width: 2rem;
+    height: 3.35rem;
+    margin-top: 1.3rem;
+    border-radius: 15px;
+    background-color: #191818;
+    color: #fff;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    text-align: center;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;
+}
+

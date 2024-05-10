@@ -1,14 +1,13 @@
 let inputNovaTarefa = document.querySelector('#inputNovaTarefa');
 let btnAddTarefa = document.querySelector('#btnAddTarefa');
 let listaTarefa = document.querySelector('#listaTarefa');
-let horas = document.getElementById('horas'); 
-let minutos = document.getElementById('minutos'); 
-let segundos = document.getElementById('segundos'); 
+let horas = document.getElementById('horas');
+let minutos = document.getElementById('minutos');
+let segundos = document.getElementById('segundos');
 
-
-let teste = [listaTarefa]
 
 //relogio
+
 
 const relogio = setInterval(function time() {
     let dataToday = new Date();
@@ -20,17 +19,21 @@ const relogio = setInterval(function time() {
     if (min < 10) min = '0' + min;
     if (s < 10) s = '0' + s;
 
+
     horas.textContent = hr;
     minutos.textContent = min;
     segundos.textContent = s;
-}) 
+})
+
 
 //to-do list
+
 
 document.addEventListener('DOMContentLoaded', function() {
     let tarefas = JSON.parse(localStorage.getItem('tarefas'));
     if(tarefas) {
         tarefas.forEach(tarefa => adicionarTarefa(tarefa));
+       
     }
 });
 function adicionarNovaTarefa () {
@@ -42,24 +45,25 @@ function adicionarNovaTarefa () {
         let ano = dataToday.getFullYear();
         let hora = dataToday.getHours();
         let minutos = dataToday.getMinutes();
-    
+   
         if (dia < 10) dia = '0' + dia;
         if (mes < 10) mes = '0' + mes;
         if (hora < 10) hora = '0' + hora;
         if (minutos < 10) minutos = '0' + minutos;
-    
-        let dataHora = `${dia}/${mes}/${ano} ${hora}:${minutos}`;
-    
+   
+        let dataHora = `${dia}/${mes}/${ano} ${hora}:${minutos} `;
+   
         let tarefa = {
             nome: inputNovaTarefa.value,
             id: gerarId(),
             dataHora: dataHora
         };
-    
+   
         adicionarTarefa(tarefa);
         salvarNoLocalStorage(tarefa);
-        inputNovaTarefa.value = ''; 
+        inputNovaTarefa.value = '';
 }}
+
 
 inputNovaTarefa.addEventListener('keypress', (e) => {
     if(e.keyCode == 13) {
@@ -67,17 +71,21 @@ inputNovaTarefa.addEventListener('keypress', (e) => {
     }
 })
 
+
 btnAddTarefa.addEventListener('click', adicionarNovaTarefa);
+
 
 function gerarId() {
     return Math.floor(Math.random() * 3000);
 }
+
 
 function adicionarTarefa(tarefa) {
     let li = criarTagLI(tarefa);
     listaTarefa.appendChild(li);  
     inputNovaTarefa.value = '';  
 }
+
 
 function criarTagLI(tarefa) {
     let li = document.createElement('li');
@@ -104,6 +112,7 @@ function criarTagLI(tarefa) {
     return li;
 }
 
+
 function excluir(idTarefa) {
     let li = document.getElementById('' + idTarefa + '');
     if (li) {
@@ -124,40 +133,39 @@ function salvarNoLocalStorage(tarefa) {
     localStorage.setItem('tarefas', JSON.stringify(tarefas));
 }
 
+
 function removerDoLocalStorage(idTarefa) {
     let tarefas = JSON.parse(localStorage.getItem('tarefas'));
     tarefas = tarefas.filter(tarefa => tarefa.id != idTarefa);
     localStorage.setItem('tarefas', JSON.stringify(tarefas));
 }
 
-if (teste.length === 0) {
-    adicionarTitulo()
-}
+//filtro
 
-function adicionarTitulo() {
-    let divTitulo = document.createElement('div');
-    divTitulo.classList.add('titulo');
+document.getElementById('ordemTarefas').addEventListener('change', ordenarTarefasExistente);
 
-    let pTitulo = document.createElement('p');
-    pTitulo.textContent = 'Título';
+function ordenarTarefasExistente() {
+    let tarefas = Array.from(listaTarefa.children);
 
-    let pDataHora = document.createElement('p');
-    pDataHora.id = 'dataHora';
-    pDataHora.textContent = 'Data e Hora';
-
-    divTitulo.appendChild(pTitulo);
-    divTitulo.appendChild(pDataHora);
-
-    document.body.insertBefore(divTitulo, listaTarefa);
-}
-
-function excluirUltimoLi() {
-    let ul = document.getElementById('listaTarefa');
-    let liCount = ul.getElementsByTagName('li').length;
-    if (liCount === 0) {
-        let divTitulo = document.querySelector('.titulo');
-        if (divTitulo) {
-            divTitulo.parentNode.removeChild(divTitulo);
-        }
+    if (this.value === 'recentes') {
+        tarefas.sort(function(a, b) {
+            let dataHoraA = new Date(a.querySelector('.dataHoraTarefa').textContent);
+            let dataHoraB = new Date(b.querySelector('.dataHoraTarefa').textContent);
+            return dataHoraB - dataHoraA;
+        });
+    } else if (this.value === 'antigas') {
+        tarefas.sort(function(a, b) {
+            let dataHoraA = new Date(a.querySelector('.dataHoraTarefa').textContent);
+            let dataHoraB = new Date(b.querySelector('.dataHoraTarefa').textContent);
+            return dataHoraA - dataHoraB;
+        });
     }
+
+    while (listaTarefa.firstChild) {
+        listaTarefa.removeChild(listaTarefa.firstChild);
+    }
+
+    tarefas.forEach(function(tarefa) {
+        listaTarefa.appendChild(tarefa);
+    });
 }

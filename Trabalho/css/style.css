@@ -230,14 +230,14 @@ body {
 /* Estilos para dispositivos móveis */
 @media only screen and (max-width: 768px) {
     .relogio {
-        width: 40%;
+        width: 60%;
         margin: 1.2rem; 
         margin-left: auto;
         margin-right: auto;
     }
 
     .relogio div {
-        width: 35%;
+        width: 100%;
         margin-bottom: 10px;
         text-align: center;
         margin-left: 3px;

@@ -129,7 +129,6 @@ function excluir(idTarefa) {
     if (li) {
         listaTarefa.removeChild(li);
         removerDoLocalStorage(idTarefa);
-        excluirUltimoLi();
     }
 }
 

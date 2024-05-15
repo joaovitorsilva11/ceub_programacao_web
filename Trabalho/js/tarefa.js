@@ -86,7 +86,6 @@ function adicionarTarefa(tarefa) {
     inputNovaTarefa.value = '';  
 }
 
-
 function criarTagLI(tarefa) {
     let li = document.createElement('li');
     li.id = tarefa.id;
@@ -96,7 +95,7 @@ function criarTagLI(tarefa) {
 
     let spanDataHora = document.createElement('span');
     spanDataHora.classList.add('dataHoraTarefa');
-    spanDataHora.textContent = tarefa.dataHora;
+    spanDataHora.textContent = tarefa.dataHora; 
 
     let div = document.createElement('div');
     let btnExcluir = document.createElement('button');
@@ -111,6 +110,18 @@ function criarTagLI(tarefa) {
 
     return li;
 }
+
+
+
+// Função para formatar a data e hora no formato "DD/MM/AAAA HH:MM"
+function getDataHoraFormatada(dataHoraTexto) {
+    let partes = dataHoraTexto.split(' ');
+    let dataPartes = partes[0].split('/');
+    let horaPartes = partes[1].split(':');
+    let dataHoraFormatada = `${dataPartes[2]}-${dataPartes[1]}-${dataPartes[0]}T${horaPartes[0]}:${horaPartes[1]}:00`;
+    return dataHoraFormatada;
+}
+
 
 
 function excluir(idTarefa) {
@@ -149,14 +160,14 @@ function ordenarTarefasExistente() {
 
     if (this.value === 'recentes') {
         tarefas.sort(function(a, b) {
-            let dataHoraA = new Date(a.querySelector('.dataHoraTarefa').textContent);
-            let dataHoraB = new Date(b.querySelector('.dataHoraTarefa').textContent);
+            let dataHoraA = new Date(getDataHoraFormatada(a.querySelector('.dataHoraTarefa').textContent));
+            let dataHoraB = new Date(getDataHoraFormatada(b.querySelector('.dataHoraTarefa').textContent));
             return dataHoraB - dataHoraA;
         });
     } else if (this.value === 'antigas') {
         tarefas.sort(function(a, b) {
-            let dataHoraA = new Date(a.querySelector('.dataHoraTarefa').textContent);
-            let dataHoraB = new Date(b.querySelector('.dataHoraTarefa').textContent);
+            let dataHoraA = new Date(getDataHoraFormatada(a.querySelector('.dataHoraTarefa').textContent));
+            let dataHoraB = new Date(getDataHoraFormatada(b.querySelector('.dataHoraTarefa').textContent));
             return dataHoraA - dataHoraB;
         });
     }
@@ -169,3 +180,4 @@ function ordenarTarefasExistente() {
         listaTarefa.appendChild(tarefa);
     });
 }
+

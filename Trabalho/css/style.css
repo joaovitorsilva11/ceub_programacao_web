@@ -225,3 +225,59 @@ body {
     appearance:         none;
 }
 
+/* teste */
+/* Adicione estas regras de mídia no final do seu arquivo CSS */
+/* Estilos para dispositivos móveis */
+@media only screen and (max-width: 768px) {
+    .relogio {
+        width: 40%;
+        margin: 1.2rem; 
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .relogio div {
+        width: 35%;
+        margin-bottom: 10px;
+        text-align: center;
+        margin-left: 3px;
+    }
+
+    .conteudo {
+        padding: 0.1rem;
+    }
+
+    .topo {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .topo input {
+        width: 80%;
+        margin-bottom: 10px;
+    }
+
+    #listaTarefa li {
+        padding: 1rem;
+    }
+
+    .titulo {
+        align-items: center;
+    }
+
+    #titulo, #dataHora {
+        width: 50%;
+        margin: 10px ;
+    }
+
+    #ordemTarefas {
+        width: 10%;
+        margin-bottom: 1.2rem;
+        margin-right: 0.7rem;
+    }
+
+    #btnAddTarefa {
+        width: 10rem;
+        height: 2rem;
+    }
+}
